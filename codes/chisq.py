@@ -3,7 +3,7 @@ import pandas as pd
 from scipy.stats import chi2_contingency
 
 # Load the dataset from a CSV file
-file_path = "../datasets/Homes for Sale and Real Estate.csv"  # Replace with the actual path to your CSV file
+file_path = "datasets\Homes for Sale and Real Estate.csv"  # Replace with the actual path to your CSV file
 df = pd.read_csv(file_path)
 
 # Create a contingency table (cross-tabulation) for the Chi-square test
