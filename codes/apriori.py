@@ -4,7 +4,7 @@ from mlxtend.frequent_patterns import apriori, fpgrowth
 from mlxtend.frequent_patterns import association_rules
 
 # Load the dataset from a CSV file
-file_path = "./datasets/Homes for Sale and Real Estate.csv"  # Replace with the actual path to your CSV file
+file_path = "../datasets/Homes for Sale and Real Estate.csv"  # Replace with the actual path to your CSV file
 df = pd.read_csv(file_path)
 
 # Drop unnecessary columns for market basket analysis

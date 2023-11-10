@@ -5,7 +5,7 @@ from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
 
 # Load the dataset
-file_path = "./datasets/Homes for Sale and Real Estate.csv"
+file_path = "../datasets/Homes for Sale and Real Estate.csv"
 data = {
     'Address': ['3704 42 St SW', '30 Mahogany Mews SE #415', '273 Auburn Shores Way SE', '235 15 Ave SW #404',
                 '24 Hemlock Crescent SW #2308', '591 Aboyne Crescent NE', '3406 64 St NE', '10551 Shillington Crescent SW',
