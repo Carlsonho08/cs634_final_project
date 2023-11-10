@@ -4,9 +4,9 @@
 ### List of team members
 * Ka Chun Ho
 * Denis A. Smirnov
-Project title
 
-### Predicting Housing Prices and Real Estate Trends
+# Project title
+ *Predicting Housing Prices and Real Estate Trends*
 
 
 ### Description of the dataset along with the link
