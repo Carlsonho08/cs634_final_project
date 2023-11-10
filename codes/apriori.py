@@ -1,37 +1,39 @@
 # Import necessary libraries
 import pandas as pd
-from mlxtend.frequent_patterns import apriori, fpgrowth
-from mlxtend.frequent_patterns import association_rules
+from mlxtend.frequent_patterns import apriori, association_rules
 
-# Load the dataset from a CSV file
+# Load the real estate dataset
 file_path = "datasets\Homes for Sale and Real Estate.csv"  # Replace with the actual path to your CSV file
 df = pd.read_csv(file_path)
 
-# Drop unnecessary columns for market basket analysis
-basket_data = df[['Beds', 'Bath', 'Place']]
+# Select relevant columns for analysis
+property_data = df[['Beds', 'Bath', 'Place']]
 
-# Convert categorical variables into a suitable format for analysis
-basket_encoded = pd.get_dummies(basket_data)
+# Convert categorical variables into numerical format for Apriori and FP-growth
+property_data_encoded = pd.get_dummies(property_data, columns=['Beds', 'Bath', 'Place'])
 
-# Apriori
-apriori_result = apriori(basket_encoded, min_support=0.1, use_colnames=True)
+# Apriori algorithm to find frequent itemsets
+frequent_itemsets_apriori = apriori(property_data_encoded, min_support=0.1, use_colnames=True)
 
-# FP-growth
-fp_growth_result = fpgrowth(basket_encoded, min_support=0.1, use_colnames=True)
+# FP-growth algorithm to find frequent itemsets
+frequent_itemsets_fpgrowth = fpgrowth(property_data_encoded, min_support=0.1, use_colnames=True)
 
-# Display the results
-print("Apriori Results:")
-print(apriori_result)
+# Display the frequent itemsets
+print("Frequent Itemsets using Apriori:")
+print(frequent_itemsets_apriori)
 
-print("\nFP-growth Results:")
-print(fp_growth_result)
+print("\nFrequent Itemsets using FP-growth:")
+print(frequent_itemsets_fpgrowth)
 
-# Generate association rules for Apriori
-apriori_rules = association_rules(apriori_result, metric="lift", min_threshold=1.0)
-print("\nApriori Association Rules:")
-print(apriori_rules)
+# Generate association rules using Apriori
+rules_apriori = association_rules(frequent_itemsets_apriori, metric='lift', min_threshold=1.0)
 
-# Generate association rules for FP-growth
-fp_growth_rules = association_rules(fp_growth_result, metric="lift", min_threshold=1.0)
-print("\nFP-growth Association Rules:")
-print(fp_growth_rules)
+# Generate association rules using FP-growth
+rules_fpgrowth = association_rules(frequent_itemsets_fpgrowth, metric='lift', min_threshold=1.0)
+
+# Display the generated association rules
+print("\nAssociation Rules using Apriori:")
+print(rules_apriori)
+
+print("\nAssociation Rules using FP-growth:")
+print(rules_fpgrowth)
